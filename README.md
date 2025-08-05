@@ -50,4 +50,24 @@ RadarSimPy 라이브러리
 - 내일부턴 동적인 데이터들(움직이는 관찰자, 차량 등)을 다뤄볼것.
 - Carla와 동일한 센서 파라미터들(FOV, 해상도, 노이즈) 설정이 가능한 시뮬레이션이고, colab에서도 가능하다!
 - 시간에 따른 차량의 위치 업데이트와 동시에, RadarSimPy로 Carla-like 센서 데이터를 생성할것.
-- 오늘 작성한 필터링, 판단 코드를 사용해 
+- 오늘 작성한 필터링, 판단 코드를 재사용할 것.
+
+실습 : len() 함수를 통해 위험 영역에 속하는 포인트 갯수를 구하고, 위험으로 판단할 임계값 ( point_count_threshold = 5 )를 의사결정 로직으로 사용.<br>
+<img width="708" height="733" alt="image" src="https://github.com/user-attachments/assets/056d6332-8422-4c9f-9f90-4840f765f0aa" />
+-> **위험 영역(Danger Zone) 조건: (0m < X < 5m) & (-2m < Y < 2m) (차량과 가까운 좌우, 앞 범위)**
+```python
+# z좌표가 필터링된 열만 담긴 points_no_ground에서 위 Danger Zone 조건을 만족하는 포인트만 선택하여 danger_zone_points 변수에 저장함.
+danger_zone_points = points_no_ground[
+    (points_no_ground[:, 0] > 0) & (points_no_ground[:, 0] < 5) &
+    (points_no_ground[:, 1] > -2) & (points_no_ground[:, 1] < 2)
+]
+
+# 의사결정 로직
+point_count_threshold = 5 # 위험으로 판단할 포인트 개수 임계값
+
+# danger_zone_points의 개수가 point_count_threshold = 5개 보다 많으면 위험으로 판단.
+if len(danger_zone_points) > point_count_threshold:
+    print("DANGER: Obstacle Detected!")
+else:
+    print("Clear: Path is safe.")
+```
