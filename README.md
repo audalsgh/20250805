@@ -23,8 +23,8 @@ radar_y = radar_data[:, 3] * np.sin(radar_data[:, 1])
 - 객체 검출의 기본 파이프라인 ( 전처리 -> 군집화 -> 분류 )
 - 임계값(Thresholding) 과 필터링(Filtering)
 - 관심영역(ROI, Region Of Interesting) 설정
-- 라이다 데이터에서 불필요한 점을 제거하고, ROI영역의 점들만 추출하는 코드 작성하기.
 
+실습 : 라이다 데이터에서 불필요한 점을 제거하고, ROI영역의 점들만 추출하는 코드 작성하기.<br>
 <img width="850" height="821" alt="image" src="https://github.com/user-attachments/assets/3ee4db40-e986-41e0-841a-09fd01380acd" /><br>
 1.  **지면 제거:** Z 좌표가 -1.0m보다 높은 포인트들만 남김. Thresholding 값이 -1.0인 것.
 2.  **ROI 설정:** 차량 전방 18m ~ 22m, 좌우 2m 영역 내의 포인트만 남김. Thresholding 값이 18~22 인 것.<br> 
