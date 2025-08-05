@@ -26,8 +26,8 @@ radar_y = radar_data[:, 3] * np.sin(radar_data[:, 1])
 - 라이다 데이터에서 불필요한 점을 제거하고, ROI영역의 점들만 추출하는 코드 작성하기.
 
 <img width="850" height="821" alt="image" src="https://github.com/user-attachments/assets/3ee4db40-e986-41e0-841a-09fd01380acd" /><br>
-1.  **지면 제거:** Z 좌표가 -1.0m보다 높은 포인트들만 남김.
-2.  **ROI 설정:** 차량 전방 18m ~ 22m, 좌우 2m 영역 내의 포인트만 남김.<br>
+1.  **지면 제거:** Z 좌표가 -1.0m보다 높은 포인트들만 남김. Thresholding 값이 -1.0인 것.
+2.  **ROI 설정:** 차량 전방 18m ~ 22m, 좌우 2m 영역 내의 포인트만 남김. Thresholding 값이 18~22 인 것.<br> 
 -> 여러 조건을 & 연산자로 결합하기.
 ```python
 points_no_ground = lidar_data[lidar_data[:, 2] > -1.0]  # z좌표 필터링
