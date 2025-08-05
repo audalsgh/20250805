@@ -30,9 +30,11 @@ radar_y = radar_data[:, 3] * np.sin(radar_data[:, 1])
 2.  **ROI 설정:** 차량 전방 18m ~ 22m, 좌우 2m 영역 내의 포인트만 남김.<br>
 -> 여러 조건을 & 연산자로 결합하기.
 ```python
+points_no_ground = lidar_data[lidar_data[:, 2] > -1.0]  # z좌표 필터링
+
 roi_points = points_no_ground[
-     (points_no_ground[:, 0] > 18) & (points_no_ground[:, 0] < 22) &
-     (points_no_ground[:, 1] > -2) & (points_no_ground[:, 1] < 2)
+     (points_no_ground[:, 0] > 18) & (points_no_ground[:, 0] < 22) &  # x 좌표 필터링
+     (points_no_ground[:, 1] > -2) & (points_no_ground[:, 1] < 2)     # y 좌표 필터링
 ]
 ```
 ## 오프라인 개발 워크플로우와 Carla(카를라) 데이터 활용
