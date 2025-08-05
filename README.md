@@ -54,7 +54,9 @@ RadarSimPy 라이브러리
 
 실습 : len() 함수를 통해 위험 영역에 속하는 포인트 갯수를 구하고, 위험으로 판단할 임계값 ( point_count_threshold = 5 )를 의사결정 로직으로 사용.<br>
 <img width="708" height="733" alt="image" src="https://github.com/user-attachments/assets/056d6332-8422-4c9f-9f90-4840f765f0aa" /><br>
--> **위험 영역(Danger Zone) 조건: (0m < X < 5m) & (-2m < Y < 2m) (차량과 가까운 좌우, 앞 범위)**
+-> 라이다 데이터가 너무 적어서 아예 위험 영역에 포인트가 있지 않았다. 다른 데이터셋을 쓰면 결과에 빨간점이 보일수도 있음.
+
+**위험 영역(Danger Zone) 조건: (0m < X < 5m) & (-2m < Y < 2m) (차량과 가까운 좌우, 앞 범위)**
 ```python
 # z좌표가 필터링된 열만 담긴 points_no_ground에서 위 Danger Zone 조건을 만족하는 포인트만 선택하여 danger_zone_points 변수에 저장함.
 danger_zone_points = points_no_ground[
