@@ -41,9 +41,13 @@ roi_points = points_no_ground[
 ]
 ```
 ## 오프라인 개발 워크플로우와 Carla(카를라) 데이터 활용
-- Carla 시뮬레이터는 VRAM 8기가 이상, ssd 용량도 많이 필요한 고사양의 compressive 실습이라 패스.
+[Carla 시뮬레이터 설치 링크](https://github.com/sachinkum0009/carla-multi-sensor-fusion)
+- VRAM 8기가 이상, ssd 용량도 많이 필요한 고사양의 compressive 실습이라 colab에선 못하므로 패스.
 - 알고리즘 핵심은 약간의 포장(Wrapping)을 거쳐, 실제 시스템의 소프트웨어 부품(ROS2 노드)이 되는것.
 - colab에서 작성한 경우에도, 파일 로드와 시각화만 다를뿐이지 핵심 로직은 변하지 않는다.
 
-- 내일부턴 RadarSimPy 라이브러리로 동적인 데이터들(움직이는 관찰자, 차량 등)을 다뤄볼것.
+RadarSimPy 라이브러리
+- 내일부턴 동적인 데이터들(움직이는 관찰자, 차량 등)을 다뤄볼것.
 - Carla와 동일한 센서 파라미터들(FOV, 해상도, 노이즈) 설정이 가능한 시뮬레이션이고, colab에서도 가능하다!
+- 시간에 따른 차량의 위치 업데이트와 동시에, RadarSimPy로 Carla-like 센서 데이터를 생성할것.
+- 오늘 작성한 필터링, 판단 코드를 사용해 
