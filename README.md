@@ -10,12 +10,13 @@
 
 실습 : lidar의 포인트 클라우드와, Radar의 탐지 객체 목록을 2d평면에 함께 시각화하기.<br>
 <img width="857" height="817" alt="image" src="https://github.com/user-attachments/assets/c1f5ec0f-2b69-4d1c-9f82-f6699f7142ed" /><br>
-plt.scatter(lidar_data[:, 0], lidar_data[:, 1], s=5, label='Lidar Points')  # 0번째 열벡터, 1번째 열벡터 선택<br>
+```plt.scatter(lidar_data[:, 0], lidar_data[:, 1], s=5, label='Lidar Points')  # 0번째 열벡터, 1번째 열벡터 선택<br>
 
 Radar에서는 **x = depth * cos(azimuth), y = depth * sin(azimuth) 공식**을 사용하여 변환해야 합니다.<br>
-radar_x = radar_data[:, 3] * np.cos(radar_data[:, 1])<br>
+```python
+radar_x = radar_data[:, 3] * np.cos(radar_data[:, 1])
 radar_y = radar_data[:, 3] * np.sin(radar_data[:, 1])
-
+```
 ## 객체 검출의 기본원리
 
 ## 오프라인 개발 워크플로우와 Carla(카를라) 데이터 활용
